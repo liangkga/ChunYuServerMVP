@@ -22,7 +22,7 @@ namespace ChunYuServer
 		public override void OnEnabled()
 		{
 			base.OnEnabled();
-			Log.Info("MVP插件开启ChunYu椿雨");
+			Log.Info("MVP插件开也启ChunYu椿雨和聿日箋秋");
 			Plugin.Instance = this;
 			Plugin.Singleton = this;
 			this.musicPlayer = new MusicPlayer();
