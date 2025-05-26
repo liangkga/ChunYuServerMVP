@@ -28,4 +28,4 @@
 
 ## 作者
 
-ChunYu-椿雨喵~
+ChunYu
