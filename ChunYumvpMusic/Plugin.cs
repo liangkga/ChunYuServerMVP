@@ -16,7 +16,7 @@ namespace ChunYuServer
 
 		public override string Name { get; } = "MVP";
 
-		public static HttpClient HttpClient { get; private set; }
+
 
 		// 插件启用时调用喵~
 		public override void OnEnabled()
@@ -28,11 +28,11 @@ namespace ChunYuServer
 			this.musicPlayer = new MusicPlayer();
 			this.mvpEvent = new MvpEvent();
 			// 订阅事件喵~
-			Exiled.Events.Handlers.Player.Verified += new CustomEventHandler<VerifiedEventArgs>(this.mvpEvent.Verified);
-			Exiled.Events.Handlers.Player.Dying += new CustomEventHandler<DyingEventArgs>(this.mvpEvent.Dying);
-			Exiled.Events.Handlers.Server.WaitingForPlayers += new CustomEventHandler(this.mvpEvent.WaitingForPlayer);
-			Exiled.Events.Handlers.Server.RoundEnded += new CustomEventHandler<RoundEndedEventArgs>(this.musicPlayer.RoundEnded);
-			Exiled.Events.Handlers.Server.WaitingForPlayers += new CustomEventHandler(this.musicPlayer.WaitingForPlayer);
+			Exiled.Events.Handlers.Player.Verified += this.mvpEvent.Verified;
+			Exiled.Events.Handlers.Player.Dying += this.mvpEvent.Dying;
+			Exiled.Events.Handlers.Server.WaitingForPlayers += this.mvpEvent.WaitingForPlayer;
+			Exiled.Events.Handlers.Server.RoundEnded += this.musicPlayer.RoundEnded;
+			Exiled.Events.Handlers.Server.WaitingForPlayers += this.musicPlayer.WaitingForPlayer;
 		}
 
 		// 插件禁用时调用喵~
@@ -40,11 +40,11 @@ namespace ChunYuServer
 		{
 			base.OnDisabled();
 			// 取消订阅事件喵~
-			Exiled.Events.Handlers.Player.Verified -= new CustomEventHandler<VerifiedEventArgs>(this.mvpEvent.Verified);
-			Exiled.Events.Handlers.Player.Dying -= new CustomEventHandler<DyingEventArgs>(this.mvpEvent.Dying);
-			Exiled.Events.Handlers.Server.WaitingForPlayers -= new CustomEventHandler(this.mvpEvent.WaitingForPlayer);
-			Exiled.Events.Handlers.Server.RoundEnded -= new CustomEventHandler<RoundEndedEventArgs>(this.musicPlayer.RoundEnded);
-			Exiled.Events.Handlers.Server.WaitingForPlayers -= new CustomEventHandler(this.musicPlayer.WaitingForPlayer);
+			Exiled.Events.Handlers.Player.Verified -= this.mvpEvent.Verified;
+			Exiled.Events.Handlers.Player.Dying -= this.mvpEvent.Dying;
+			Exiled.Events.Handlers.Server.WaitingForPlayers -= this.mvpEvent.WaitingForPlayer;
+			Exiled.Events.Handlers.Server.RoundEnded -= this.musicPlayer.RoundEnded;
+			Exiled.Events.Handlers.Server.WaitingForPlayers -= this.musicPlayer.WaitingForPlayer;
 			Plugin.Instance = null;
 			Plugin.Singleton = null;
 			this.mvpEvent = null;
