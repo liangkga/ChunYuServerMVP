@@ -1,4 +1,4 @@
-MIT License
+MIT License with Non-Commercial Clause
 
 Copyright (c) 2025 liangkga
 
@@ -11,6 +11,17 @@ furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
+
+ADDITIONAL RESTRICTION:
+This software and derivatives may not be used for commercial purposes,
+including but not limited to:
+
+Monetized distribution or sale of the software
+
+Integration into commercial products/services
+
+Use in revenue-generating business operations
+Commercial usage requires explicit written permission from the copyright holder(s).
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
