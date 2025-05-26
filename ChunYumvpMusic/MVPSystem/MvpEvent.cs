@@ -19,41 +19,25 @@ namespace ChunYuServer.MVPSystem
 		// 玩家验证时调用喵~
 		public void Verified(VerifiedEventArgs ev)
 		{
-			bool flag = ev.Player != null;
-			if (flag)
+			if (ev.Player != null)
 			{
-				// 延迟初始化玩家击杀计数为 1 喵~
-				Timing.CallDelayed(0.5f, delegate()
-				{
-					MvpEvent.PlayerKillCount[ev.Player] = 1;
-				});
+				// 初始化玩家击杀计数为 0 喵~
+				MvpEvent.PlayerKillCount[ev.Player] = 0;
 			}
 		}
 
 		// 玩家死亡时调用喵~
 		public void Dying(DyingEventArgs ev)
 		{
-			bool flag = ev.Player != null && ev.Attacker != null;
-			if (flag)
+			if (ev.Player != null && ev.Attacker != null && MvpEvent.PlayerKillCount.ContainsKey(ev.Attacker))
 			{
-				bool flag2 = MvpEvent.PlayerKillCount.ContainsKey(ev.Attacker);
-				if (flag2)
+				if (ev.Player.IsHuman)
 				{
-					bool isHuman = ev.Player.IsHuman;
-					if (isHuman)
-					{
-						Dictionary<Player, int> playerKillCount = MvpEvent.PlayerKillCount;
-						Player attacker = ev.Attacker;
-						int num = playerKillCount[attacker];
-						playerKillCount[attacker] = num + 1;
-					}
-					bool isScp = ev.Player.IsScp;
-					if (isScp)
-					{
-						Dictionary<Player, int> playerKillCount2 = MvpEvent.PlayerKillCount;
-						Player attacker = ev.Attacker;
-						playerKillCount2[attacker] += 5;
-					}
+					MvpEvent.PlayerKillCount[ev.Attacker]++;
+				}
+				if (ev.Player.IsScp)
+				{
+					MvpEvent.PlayerKillCount[ev.Attacker] += 5;
 				}
 			}
 		}
